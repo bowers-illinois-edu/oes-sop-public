@@ -1,23 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang xml:lang>
 <head>
 
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OES Methodological Standard Operating Procedure</title>
+  <title>Chapter 6 Power analysis | OES Methodological Standard Operating Procedure</title>
   <meta name="description" content="These are the current standard operating procedures for statistical analysis of the Office of Evaluation Sciences in the GSA">
-  <meta name="generator" content="bookdown &lt;!--bookdown:version--&gt; and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7">
 
-  <meta property="og:title" content="OES Methodological Standard Operating Procedure">
+  <meta property="og:title" content="Chapter 6 Power analysis | OES Methodological Standard Operating Procedure">
   <meta property="og:type" content="book">
-  
   
   <meta property="og:description" content="These are the current standard operating procedures for statistical analysis of the Office of Evaluation Sciences in the GSA">
   <meta name="github-repo" content="gsa-oes/sop">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="OES Methodological Standard Operating Procedure">
+  <meta name="twitter:title" content="Chapter 6 Power analysis | OES Methodological Standard Operating Procedure">
   
   <meta name="twitter:description" content="These are the current standard operating procedures for statistical analysis of the Office of Evaluation Sciences in the GSA">
   
@@ -25,22 +23,24 @@
 <meta name="author" content="OES Methods Team">
 
 
-<meta name="date" content="2025-05-09">
+<meta name="date" content="2025-07-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="analysis-choices.html">
-<link rel="next" href="translating.html">
-<script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<link rel="prev" href="analysis-choices.html"/>
+<link rel="next" href="translating.html"/>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet">
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet">
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet">
 <link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet">
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet">
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet">
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet">
 
 
 
@@ -48,12 +48,18 @@
 
 
 
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet">
+<link href="libs/anchor-sections/anchor-sections-hash.css" rel="stylesheet">
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/clipboard/clipboard.min.js"></script>
 <link href="libs/primer-tooltips/build.css" rel="stylesheet">
 <link href="libs/klippy/css/klippy.min.css" rel="stylesheet">
 <script src="libs/klippy/js/klippy.min.js"></script>
 <script src="libs/kePrint/kePrint.js"></script>
 <link href="libs/lightable/lightable.css" rel="stylesheet">
+<link href="libs/bsTable/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable/bootstrapTable.js"></script>
 
 <script>
 /* ========================================================================
@@ -434,7 +440,6 @@ pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -494,8 +499,36 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" data-external="1"></head>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" data-external="1"></head>
 
 <body>
 
@@ -510,126 +543,126 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">The OES SOP</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#overview" id="toc-overview">Overview</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
 <ul>
-<li><a href="index.html#purposes-of-this-document" id="toc-purposes-of-this-document">Purposes of this document</a></li>
-<li><a href="index.html#nature-and-limitations-of-this-document" id="toc-nature-and-limitations-of-this-document">Nature and limitations of this document</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#purposes-of-this-document"><i class="fa fa-check"></i>Purposes of this document</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#nature-and-limitations-of-this-document"><i class="fa fa-check"></i>Nature and limitations of this document</a>
 <ul>
-<li><a href="index.html#we-mostly-focus-on-randomized-field-experiments." id="toc-we-mostly-focus-on-randomized-field-experiments.">We (mostly) focus on randomized field experiments.</a></li>
-<li><a href="index.html#we-mostly-present-examples-using-r" id="toc-we-mostly-present-examples-using-r">We (mostly) present examples using R</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#we-mostly-focus-on-randomized-field-experiments."><i class="fa fa-check"></i>We (mostly) focus on randomized field experiments.</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#we-mostly-present-examples-using-r"><i class="fa fa-check"></i>We (mostly) present examples using R</a></li>
 </ul></li>
-<li><a href="index.html#structure" id="toc-structure">Structure</a></li>
-<li><a href="index.html#help-us-improve-our-work" id="toc-help-us-improve-our-work">Help us improve our work!</a></li>
-<li><a href="index.html#technical-details" id="toc-technical-details">Technical details</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#structure"><i class="fa fa-check"></i>Structure</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#help-us-improve-our-work"><i class="fa fa-check"></i>Help us improve our work!</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#technical-details"><i class="fa fa-check"></i>Technical details</a></li>
 </ul></li>
-<li><a href="using-tests-to-inform-policy.html#using-tests-to-inform-policy" id="toc-using-tests-to-inform-policy"><span class="toc-section-number">1</span> Using tests to inform policy</a></li>
-<li><a href="key-design-criteria.html#key-design-criteria" id="toc-key-design-criteria"><span class="toc-section-number">2</span> Key design criteria</a>
+<li class="chapter" data-level="1" data-path="using-tests-to-inform-policy.html"><a href="using-tests-to-inform-policy.html"><i class="fa fa-check"></i><b>1</b> Using tests to inform policy</a></li>
+<li class="chapter" data-level="2" data-path="key-design-criteria.html"><a href="key-design-criteria.html"><i class="fa fa-check"></i><b>2</b> Key design criteria</a>
 <ul>
-<li><a href="key-design-criteria.html#high-statistical-power" id="toc-high-statistical-power"><span class="toc-section-number">2.1</span> High statistical power</a></li>
-<li><a href="key-design-criteria.html#controlled-error-rates" id="toc-controlled-error-rates"><span class="toc-section-number">2.2</span> Controlled error rates</a></li>
-<li><a href="key-design-criteria.html#unbiased-estimators" id="toc-unbiased-estimators"><span class="toc-section-number">2.3</span> Unbiased estimators</a></li>
+<li class="chapter" data-level="2.1" data-path="key-design-criteria.html"><a href="key-design-criteria.html#high-statistical-power"><i class="fa fa-check"></i><b>2.1</b> High statistical power</a></li>
+<li class="chapter" data-level="2.2" data-path="key-design-criteria.html"><a href="key-design-criteria.html#controlled-error-rates"><i class="fa fa-check"></i><b>2.2</b> Controlled error rates</a></li>
+<li class="chapter" data-level="2.3" data-path="key-design-criteria.html"><a href="key-design-criteria.html#unbiased-estimators"><i class="fa fa-check"></i><b>2.3</b> Unbiased estimators</a></li>
 </ul></li>
-<li><a href="design-based-inference.html#design-based-inference" id="toc-design-based-inference"><span class="toc-section-number">3</span> Design based inference</a>
+<li class="chapter" data-level="3" data-path="design-based-inference.html"><a href="design-based-inference.html"><i class="fa fa-check"></i><b>3</b> Design based inference</a>
 <ul>
-<li><a href="design-based-inference.html#randinfex" id="toc-randinfex"><span class="toc-section-number">3.1</span> An example using simulated data</a>
+<li class="chapter" data-level="3.1" data-path="design-based-inference.html"><a href="design-based-inference.html#randinfex"><i class="fa fa-check"></i><b>3.1</b> An example using simulated data</a>
 <ul>
-<li><a href="design-based-inference.html#randomization-based-standard-errors" id="toc-randomization-based-standard-errors"><span class="toc-section-number">3.1.1</span> Randomization-based standard errors</a></li>
-<li><a href="design-based-inference.html#randomization-based-confidence-intervals" id="toc-randomization-based-confidence-intervals"><span class="toc-section-number">3.1.2</span> Randomization-based confidence intervals</a></li>
+<li class="chapter" data-level="3.1.1" data-path="design-based-inference.html"><a href="design-based-inference.html#randomization-based-standard-errors"><i class="fa fa-check"></i><b>3.1.1</b> Randomization-based standard errors</a></li>
+<li class="chapter" data-level="3.1.2" data-path="design-based-inference.html"><a href="design-based-inference.html#randomization-based-confidence-intervals"><i class="fa fa-check"></i><b>3.1.2</b> Randomization-based confidence intervals</a></li>
 </ul></li>
-<li><a href="design-based-inference.html#summary-what-does-a-design-based-approach-mean-for-policy-evaluation" id="toc-summary-what-does-a-design-based-approach-mean-for-policy-evaluation"><span class="toc-section-number">3.2</span> Summary: What does a design based approach mean for policy evaluation?</a></li>
+<li class="chapter" data-level="3.2" data-path="design-based-inference.html"><a href="design-based-inference.html#summary-what-does-a-design-based-approach-mean-for-policy-evaluation"><i class="fa fa-check"></i><b>3.2</b> Summary: What does a design based approach mean for policy evaluation?</a></li>
 </ul></li>
-<li><a href="randomization-choices.html#randomization-choices" id="toc-randomization-choices"><span class="toc-section-number">4</span> Randomization choices</a>
+<li class="chapter" data-level="4" data-path="randomization-choices.html"><a href="randomization-choices.html"><i class="fa fa-check"></i><b>4</b> Randomization choices</a>
 <ul>
-<li><a href="randomization-choices.html#coin-flipping-vs-urn-drawing-randomization" id="toc-coin-flipping-vs-urn-drawing-randomization"><span class="toc-section-number">4.1</span> Coin flipping vs urn-drawing randomization</a></li>
-<li><a href="randomization-choices.html#randomization-into-2-or-more-groups" id="toc-randomization-into-2-or-more-groups"><span class="toc-section-number">4.2</span> Randomization into 2 or more groups</a></li>
-<li><a href="randomization-choices.html#factorial-designs" id="toc-factorial-designs"><span class="toc-section-number">4.3</span> Factorial designs</a></li>
-<li><a href="randomization-choices.html#block-random-assignment" id="toc-block-random-assignment"><span class="toc-section-number">4.4</span> Block random assignment</a>
+<li class="chapter" data-level="4.1" data-path="randomization-choices.html"><a href="randomization-choices.html#coin-flipping-vs-urn-drawing-randomization"><i class="fa fa-check"></i><b>4.1</b> Coin flipping vs urn-drawing randomization</a></li>
+<li class="chapter" data-level="4.2" data-path="randomization-choices.html"><a href="randomization-choices.html#randomization-into-2-or-more-groups"><i class="fa fa-check"></i><b>4.2</b> Randomization into 2 or more groups</a></li>
+<li class="chapter" data-level="4.3" data-path="randomization-choices.html"><a href="randomization-choices.html#factorial-designs"><i class="fa fa-check"></i><b>4.3</b> Factorial designs</a></li>
+<li class="chapter" data-level="4.4" data-path="randomization-choices.html"><a href="randomization-choices.html#block-random-assignment"><i class="fa fa-check"></i><b>4.4</b> Block random assignment</a>
 <ul>
-<li><a href="randomization-choices.html#the-benefits-of-blocking" id="toc-the-benefits-of-blocking"><span class="toc-section-number">4.4.1</span> The benefits of blocking</a></li>
-<li><a href="randomization-choices.html#using-a-few-covariates-to-create-blocks" id="toc-using-a-few-covariates-to-create-blocks"><span class="toc-section-number">4.4.2</span> Using a few covariates to create blocks</a></li>
-<li><a href="randomization-choices.html#blocking-using-many-covariates" id="toc-blocking-using-many-covariates"><span class="toc-section-number">4.4.3</span> Blocking using many covariates</a></li>
-<li><a href="randomization-choices.html#disadvantages" id="toc-disadvantages"><span class="toc-section-number">4.4.4</span> Disadvantages</a></li>
+<li class="chapter" data-level="4.4.1" data-path="randomization-choices.html"><a href="randomization-choices.html#the-benefits-of-blocking"><i class="fa fa-check"></i><b>4.4.1</b> The benefits of blocking</a></li>
+<li class="chapter" data-level="4.4.2" data-path="randomization-choices.html"><a href="randomization-choices.html#using-a-few-covariates-to-create-blocks"><i class="fa fa-check"></i><b>4.4.2</b> Using a few covariates to create blocks</a></li>
+<li class="chapter" data-level="4.4.3" data-path="randomization-choices.html"><a href="randomization-choices.html#blocking-using-many-covariates"><i class="fa fa-check"></i><b>4.4.3</b> Blocking using many covariates</a></li>
+<li class="chapter" data-level="4.4.4" data-path="randomization-choices.html"><a href="randomization-choices.html#disadvantages"><i class="fa fa-check"></i><b>4.4.4</b> Disadvantages</a></li>
 </ul></li>
-<li><a href="randomization-choices.html#cluster-random-assignment" id="toc-cluster-random-assignment"><span class="toc-section-number">4.5</span> Cluster random assignment</a></li>
-<li><a href="randomization-choices.html#other-randomized-designs" id="toc-other-randomized-designs"><span class="toc-section-number">4.6</span> Other randomized designs</a></li>
-<li><a href="randomization-choices.html#as-if-random-assignment" id="toc-as-if-random-assignment"><span class="toc-section-number">4.7</span> As-if random assignment</a></li>
-<li><a href="randomization-choices.html#assessing-randomization-balance-testing" id="toc-assessing-randomization-balance-testing"><span class="toc-section-number">4.8</span> Assessing randomization (balance testing)</a>
+<li class="chapter" data-level="4.5" data-path="randomization-choices.html"><a href="randomization-choices.html#cluster-random-assignment"><i class="fa fa-check"></i><b>4.5</b> Cluster random assignment</a></li>
+<li class="chapter" data-level="4.6" data-path="randomization-choices.html"><a href="randomization-choices.html#other-randomized-designs"><i class="fa fa-check"></i><b>4.6</b> Other randomized designs</a></li>
+<li class="chapter" data-level="4.7" data-path="randomization-choices.html"><a href="randomization-choices.html#as-if-random-assignment"><i class="fa fa-check"></i><b>4.7</b> As-if random assignment</a></li>
+<li class="chapter" data-level="4.8" data-path="randomization-choices.html"><a href="randomization-choices.html#assessing-randomization-balance-testing"><i class="fa fa-check"></i><b>4.8</b> Assessing randomization (balance testing)</a>
 <ul>
-<li><a href="randomization-choices.html#separate-tests-for-each-covariate" id="toc-separate-tests-for-each-covariate"><span class="toc-section-number">4.8.1</span> Separate tests for each covariate</a></li>
-<li><a href="randomization-choices.html#omnibus-tests" id="toc-omnibus-tests"><span class="toc-section-number">4.8.2</span> Omnibus tests</a></li>
-<li><a href="randomization-choices.html#summary" id="toc-summary"><span class="toc-section-number">4.8.3</span> Summary</a></li>
-<li><a href="randomization-choices.html#coded-examples" id="toc-coded-examples"><span class="toc-section-number">4.8.4</span> Coded examples</a></li>
-<li><a href="randomization-choices.html#what-to-do-with-failed-randomization-assessments" id="toc-what-to-do-with-failed-randomization-assessments"><span class="toc-section-number">4.8.5</span> What to do with &#x201C;failed&#x201D; randomization assessments?</a></li>
-</ul></li>
-</ul></li>
-<li><a href="analysis-choices.html#analysis-choices" id="toc-analysis-choices"><span class="toc-section-number">5</span> Analysis choices</a>
-<ul>
-<li><a href="analysis-choices.html#completely-randomized-trials" id="toc-completely-randomized-trials"><span class="toc-section-number">5.1</span> Completely randomized trials</a>
-<ul>
-<li><a href="analysis-choices.html#two-arms" id="toc-two-arms"><span class="toc-section-number">5.1.1</span> Two arms</a></li>
-</ul></li>
-<li><a href="analysis-choices.html#multiple-tests" id="toc-multiple-tests"><span class="toc-section-number">5.2</span> Multiple tests</a>
-<ul>
-<li><a href="analysis-choices.html#multiple-arms" id="toc-multiple-arms"><span class="toc-section-number">5.2.1</span> Multiple arms</a></li>
-<li><a href="analysis-choices.html#multiple-outcomes" id="toc-multiple-outcomes"><span class="toc-section-number">5.2.2</span> Multiple outcomes</a></li>
-<li><a href="analysis-choices.html#when-is-this-necessary" id="toc-when-is-this-necessary"><span class="toc-section-number">5.2.3</span> When is this necessary?</a></li>
-</ul></li>
-<li><a href="analysis-choices.html#covariance-adjustment" id="toc-covariance-adjustment"><span class="toc-section-number">5.3</span> Covariance adjustment</a>
-<ul>
-<li><a href="analysis-choices.html#possible-bias-in-the-least-squares-ate-estimator-with-covariates" id="toc-possible-bias-in-the-least-squares-ate-estimator-with-covariates"><span class="toc-section-number">5.3.1</span> Possible bias in the least squares ATE estimator with covariates</a></li>
-<li><a href="analysis-choices.html#illustrating-the-lin-approach-to-covariance-adjustment" id="toc-illustrating-the-lin-approach-to-covariance-adjustment"><span class="toc-section-number">5.3.2</span> Illustrating the Lin Approach to Covariance Adjustment</a></li>
-<li><a href="analysis-choices.html#another-way-to-think-about-lin-adjustment" id="toc-another-way-to-think-about-lin-adjustment"><span class="toc-section-number">5.3.3</span> Another way to think about Lin adjustment</a></li>
-<li><a href="analysis-choices.html#the-rosenbaum-approach-to-covariance-adjustment" id="toc-the-rosenbaum-approach-to-covariance-adjustment"><span class="toc-section-number">5.3.4</span> The Rosenbaum Approach to Covariance Adjustment</a></li>
-</ul></li>
-<li><a href="analysis-choices.html#how-to-choose-covariates-for-covariance-adjustment" id="toc-how-to-choose-covariates-for-covariance-adjustment"><span class="toc-section-number">5.4</span> How to choose covariates for covariance adjustment?</a></li>
-<li><a href="analysis-choices.html#blockrandanalysis" id="toc-blockrandanalysis"><span class="toc-section-number">5.5</span> Block-randomized trials</a>
-<ul>
-<li><a href="analysis-choices.html#testing-binary-outcomes-under-block-randomization-cochran-mantel-haenszel-cmh-test-for-k-x-2-x-2-tables" id="toc-testing-binary-outcomes-under-block-randomization-cochran-mantel-haenszel-cmh-test-for-k-x-2-x-2-tables"><span class="toc-section-number">5.5.1</span> Testing binary outcomes under block randomization: Cochran-Mantel-Haenszel (CMH) test for K X 2 X 2 tables</a></li>
-<li><a href="analysis-choices.html#blockrandate" id="toc-blockrandate"><span class="toc-section-number">5.5.2</span> Estimating an overall average treatment effect</a></li>
-</ul></li>
-<li><a href="analysis-choices.html#clusterrandanalysis" id="toc-clusterrandanalysis"><span class="toc-section-number">5.6</span> Cluster-randomized trials</a>
-<ul>
-<li><a href="analysis-choices.html#bias-when-cluster-size-is-correlated-with-potential-outcomes" id="toc-bias-when-cluster-size-is-correlated-with-potential-outcomes"><span class="toc-section-number">5.6.1</span> Bias when cluster size is correlated with potential outcomes</a></li>
-<li><a href="analysis-choices.html#incorrect-false-positive-rates-from-tests-and-confidence-intervals" id="toc-incorrect-false-positive-rates-from-tests-and-confidence-intervals"><span class="toc-section-number">5.6.2</span> Incorrect false positive rates from tests and confidence intervals</a></li>
+<li class="chapter" data-level="4.8.1" data-path="randomization-choices.html"><a href="randomization-choices.html#separate-tests-for-each-covariate"><i class="fa fa-check"></i><b>4.8.1</b> Separate tests for each covariate</a></li>
+<li class="chapter" data-level="4.8.2" data-path="randomization-choices.html"><a href="randomization-choices.html#omnibus-tests"><i class="fa fa-check"></i><b>4.8.2</b> Omnibus tests</a></li>
+<li class="chapter" data-level="4.8.3" data-path="randomization-choices.html"><a href="randomization-choices.html#summary"><i class="fa fa-check"></i><b>4.8.3</b> Summary</a></li>
+<li class="chapter" data-level="4.8.4" data-path="randomization-choices.html"><a href="randomization-choices.html#coded-examples"><i class="fa fa-check"></i><b>4.8.4</b> Coded examples</a></li>
+<li class="chapter" data-level="4.8.5" data-path="randomization-choices.html"><a href="randomization-choices.html#what-to-do-with-failed-randomization-assessments"><i class="fa fa-check"></i><b>4.8.5</b> What to do with &#x201C;failed&#x201D; randomization assessments?</a></li>
 </ul></li>
 </ul></li>
-<li><a href="poweranalysis.html#poweranalysis" id="toc-poweranalysis"><span class="toc-section-number">6</span> Power analysis</a>
+<li class="chapter" data-level="5" data-path="analysis-choices.html"><a href="analysis-choices.html"><i class="fa fa-check"></i><b>5</b> Analysis choices</a>
 <ul>
-<li><a href="poweranalysis.html#an-example-of-the-off-the-shelf-approach" id="toc-an-example-of-the-off-the-shelf-approach"><span class="toc-section-number">6.1</span> An example of the off-the-shelf approach</a></li>
-<li><a href="poweranalysis.html#an-example-of-the-simulation-approach" id="toc-an-example-of-the-simulation-approach"><span class="toc-section-number">6.2</span> An example of the simulation approach</a>
+<li class="chapter" data-level="5.1" data-path="analysis-choices.html"><a href="analysis-choices.html#completely-randomized-trials"><i class="fa fa-check"></i><b>5.1</b> Completely randomized trials</a>
 <ul>
-<li><a href="poweranalysis.html#how-do-we-structure-the-simulation" id="toc-how-do-we-structure-the-simulation"><span class="toc-section-number">6.2.1</span> How do we structure the simulation?</a></li>
-<li><a href="poweranalysis.html#simulation-template-code" id="toc-simulation-template-code"><span class="toc-section-number">6.2.2</span> Simulation template code</a></li>
+<li class="chapter" data-level="5.1.1" data-path="analysis-choices.html"><a href="analysis-choices.html#two-arms"><i class="fa fa-check"></i><b>5.1.1</b> Two arms</a></li>
 </ul></li>
-<li><a href="poweranalysis.html#when-to-use-which-approach" id="toc-when-to-use-which-approach"><span class="toc-section-number">6.3</span> When to use which approach</a></li>
-<li><a href="poweranalysis.html#additional-examples-of-the-simulation-approach" id="toc-additional-examples-of-the-simulation-approach"><span class="toc-section-number">6.4</span> Additional examples of the simulation approach</a>
+<li class="chapter" data-level="5.2" data-path="analysis-choices.html"><a href="analysis-choices.html#multiple-tests"><i class="fa fa-check"></i><b>5.2</b> Multiple tests</a>
 <ul>
-<li><a href="poweranalysis.html#a-two-by-two-design-with-interaction" id="toc-a-two-by-two-design-with-interaction"><span class="toc-section-number">6.4.1</span> A two-by-two design with interaction</a></li>
-<li><a href="poweranalysis.html#covariate-adjustment-with-the-lin-estimator" id="toc-covariate-adjustment-with-the-lin-estimator"><span class="toc-section-number">6.4.2</span> Covariate adjustment with the Lin estimator</a></li>
-<li><a href="poweranalysis.html#incorporating-declaredesign-into-oes-power-tools" id="toc-incorporating-declaredesign-into-oes-power-tools"><span class="toc-section-number">6.4.3</span> Incorporating DeclareDesign into OES Power Tools</a></li>
+<li class="chapter" data-level="5.2.1" data-path="analysis-choices.html"><a href="analysis-choices.html#multiple-arms"><i class="fa fa-check"></i><b>5.2.1</b> Multiple arms</a></li>
+<li class="chapter" data-level="5.2.2" data-path="analysis-choices.html"><a href="analysis-choices.html#multiple-outcomes"><i class="fa fa-check"></i><b>5.2.2</b> Multiple outcomes</a></li>
+<li class="chapter" data-level="5.2.3" data-path="analysis-choices.html"><a href="analysis-choices.html#when-is-this-necessary"><i class="fa fa-check"></i><b>5.2.3</b> When is this necessary?</a></li>
 </ul></li>
-<li><a href="poweranalysis.html#approximating-power-ex-post" id="toc-approximating-power-ex-post"><span class="toc-section-number">6.5</span> Approximating power ex-post</a></li>
-</ul></li>
-<li><a href="translating.html#translating" id="toc-translating"><span class="toc-section-number">7</span> Communicating evidence</a>
+<li class="chapter" data-level="5.3" data-path="analysis-choices.html"><a href="analysis-choices.html#covariance-adjustment"><i class="fa fa-check"></i><b>5.3</b> Covariance adjustment</a>
 <ul>
-<li><a href="translating.html#talking-about-common-estimates" id="toc-talking-about-common-estimates"><span class="toc-section-number">7.1</span> Talking about common estimates</a>
+<li class="chapter" data-level="5.3.1" data-path="analysis-choices.html"><a href="analysis-choices.html#possible-bias-in-the-least-squares-ate-estimator-with-covariates"><i class="fa fa-check"></i><b>5.3.1</b> Possible bias in the least squares ATE estimator with covariates</a></li>
+<li class="chapter" data-level="5.3.2" data-path="analysis-choices.html"><a href="analysis-choices.html#illustrating-the-lin-approach-to-covariance-adjustment"><i class="fa fa-check"></i><b>5.3.2</b> Illustrating the Lin Approach to Covariance Adjustment</a></li>
+<li class="chapter" data-level="5.3.3" data-path="analysis-choices.html"><a href="analysis-choices.html#another-way-to-think-about-lin-adjustment"><i class="fa fa-check"></i><b>5.3.3</b> Another way to think about Lin adjustment</a></li>
+<li class="chapter" data-level="5.3.4" data-path="analysis-choices.html"><a href="analysis-choices.html#the-rosenbaum-approach-to-covariance-adjustment"><i class="fa fa-check"></i><b>5.3.4</b> The Rosenbaum Approach to Covariance Adjustment</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="analysis-choices.html"><a href="analysis-choices.html#how-to-choose-covariates-for-covariance-adjustment"><i class="fa fa-check"></i><b>5.4</b> How to choose covariates for covariance adjustment?</a></li>
+<li class="chapter" data-level="5.5" data-path="analysis-choices.html"><a href="analysis-choices.html#blockrandanalysis"><i class="fa fa-check"></i><b>5.5</b> Block-randomized trials</a>
 <ul>
-<li><a href="translating.html#average-treatment-effects" id="toc-average-treatment-effects"><span class="toc-section-number">7.1.1</span> Average treatment effects</a></li>
-<li><a href="translating.html#p-values" id="toc-p-values"><span class="toc-section-number">7.1.2</span> p-values</a></li>
-<li><a href="translating.html#confidence-intervals" id="toc-confidence-intervals"><span class="toc-section-number">7.1.3</span> Confidence intervals</a></li>
+<li class="chapter" data-level="5.5.1" data-path="analysis-choices.html"><a href="analysis-choices.html#testing-binary-outcomes-under-block-randomization-cochran-mantel-haenszel-cmh-test-for-k-x-2-x-2-tables"><i class="fa fa-check"></i><b>5.5.1</b> Testing binary outcomes under block randomization: Cochran-Mantel-Haenszel (CMH) test for K X 2 X 2 tables</a></li>
+<li class="chapter" data-level="5.5.2" data-path="analysis-choices.html"><a href="analysis-choices.html#blockrandate"><i class="fa fa-check"></i><b>5.5.2</b> Estimating an overall average treatment effect</a></li>
 </ul></li>
-<li><a href="translating.html#making-sense-of-statistically-insignificant-results" id="toc-making-sense-of-statistically-insignificant-results"><span class="toc-section-number">7.2</span> Making sense of statistically insignificant results</a>
+<li class="chapter" data-level="5.6" data-path="analysis-choices.html"><a href="analysis-choices.html#clusterrandanalysis"><i class="fa fa-check"></i><b>5.6</b> Cluster-randomized trials</a>
 <ul>
-<li><a href="translating.html#statistical-power" id="toc-statistical-power"><span class="toc-section-number">7.2.1</span> Statistical power</a></li>
-<li><a href="translating.html#equivalence-tests" id="toc-equivalence-tests"><span class="toc-section-number">7.2.2</span> Equivalence tests</a></li>
+<li class="chapter" data-level="5.6.1" data-path="analysis-choices.html"><a href="analysis-choices.html#bias-when-cluster-size-is-correlated-with-potential-outcomes"><i class="fa fa-check"></i><b>5.6.1</b> Bias when cluster size is correlated with potential outcomes</a></li>
+<li class="chapter" data-level="5.6.2" data-path="analysis-choices.html"><a href="analysis-choices.html#incorrect-false-positive-rates-from-tests-and-confidence-intervals"><i class="fa fa-check"></i><b>5.6.2</b> Incorrect false positive rates from tests and confidence intervals</a></li>
 </ul></li>
-<li><a href="translating.html#efficacy-vs-toxicity" id="toc-efficacy-vs-toxicity"><span class="toc-section-number">7.3</span> Efficacy vs toxicity</a></li>
-<li><a href="translating.html#costbenefit-calculations" id="toc-costbenefit-calculations"><span class="toc-section-number">7.4</span> Cost/benefit calculations</a></li>
 </ul></li>
-<li><a href="codeindex.html#codeindex" id="toc-codeindex"><span class="toc-section-number">8</span> Code example index</a></li>
-<li><a href="methodindex.html#methodindex" id="toc-methodindex"><span class="toc-section-number">9</span> Methods topic index</a></li>
-<li><a href="appendix.html#appendix" id="toc-appendix"><span class="toc-section-number">10</span> Appendix</a></li>
-<li><a href="references.html#references" id="toc-references">References</a></li>
+<li class="chapter" data-level="6" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>6</b> Power analysis</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="poweranalysis.html"><a href="poweranalysis.html#an-example-of-the-off-the-shelf-approach"><i class="fa fa-check"></i><b>6.1</b> An example of the off-the-shelf approach</a></li>
+<li class="chapter" data-level="6.2" data-path="poweranalysis.html"><a href="poweranalysis.html#an-example-of-the-simulation-approach"><i class="fa fa-check"></i><b>6.2</b> An example of the simulation approach</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="poweranalysis.html"><a href="poweranalysis.html#how-do-we-structure-the-simulation"><i class="fa fa-check"></i><b>6.2.1</b> How do we structure the simulation?</a></li>
+<li class="chapter" data-level="6.2.2" data-path="poweranalysis.html"><a href="poweranalysis.html#simulation-template-code"><i class="fa fa-check"></i><b>6.2.2</b> Simulation template code</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="poweranalysis.html"><a href="poweranalysis.html#when-to-use-which-approach"><i class="fa fa-check"></i><b>6.3</b> When to use which approach</a></li>
+<li class="chapter" data-level="6.4" data-path="poweranalysis.html"><a href="poweranalysis.html#additional-examples-of-the-simulation-approach"><i class="fa fa-check"></i><b>6.4</b> Additional examples of the simulation approach</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="poweranalysis.html"><a href="poweranalysis.html#a-two-by-two-design-with-interaction"><i class="fa fa-check"></i><b>6.4.1</b> A two-by-two design with interaction</a></li>
+<li class="chapter" data-level="6.4.2" data-path="poweranalysis.html"><a href="poweranalysis.html#covariate-adjustment-with-the-lin-estimator"><i class="fa fa-check"></i><b>6.4.2</b> Covariate adjustment with the Lin estimator</a></li>
+<li class="chapter" data-level="6.4.3" data-path="poweranalysis.html"><a href="poweranalysis.html#incorporating-declaredesign-into-oes-power-tools"><i class="fa fa-check"></i><b>6.4.3</b> Incorporating DeclareDesign into OES Power Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="poweranalysis.html"><a href="poweranalysis.html#approximating-power-ex-post"><i class="fa fa-check"></i><b>6.5</b> Approximating power ex-post</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="translating.html"><a href="translating.html"><i class="fa fa-check"></i><b>7</b> Communicating evidence</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="translating.html"><a href="translating.html#talking-about-common-estimates"><i class="fa fa-check"></i><b>7.1</b> Talking about common estimates</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="translating.html"><a href="translating.html#average-treatment-effects"><i class="fa fa-check"></i><b>7.1.1</b> Average treatment effects</a></li>
+<li class="chapter" data-level="7.1.2" data-path="translating.html"><a href="translating.html#p-values"><i class="fa fa-check"></i><b>7.1.2</b> p-values</a></li>
+<li class="chapter" data-level="7.1.3" data-path="translating.html"><a href="translating.html#confidence-intervals"><i class="fa fa-check"></i><b>7.1.3</b> Confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="translating.html"><a href="translating.html#making-sense-of-statistically-insignificant-results"><i class="fa fa-check"></i><b>7.2</b> Making sense of statistically insignificant results</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="translating.html"><a href="translating.html#statistical-power"><i class="fa fa-check"></i><b>7.2.1</b> Statistical power</a></li>
+<li class="chapter" data-level="7.2.2" data-path="translating.html"><a href="translating.html#equivalence-tests"><i class="fa fa-check"></i><b>7.2.2</b> Equivalence tests</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="translating.html"><a href="translating.html#efficacy-vs-toxicity"><i class="fa fa-check"></i><b>7.3</b> Efficacy vs toxicity</a></li>
+<li class="chapter" data-level="7.4" data-path="translating.html"><a href="translating.html#costbenefit-calculations"><i class="fa fa-check"></i><b>7.4</b> Cost/benefit calculations</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="codeindex.html"><a href="codeindex.html"><i class="fa fa-check"></i><b>8</b> Code example index</a></li>
+<li class="chapter" data-level="9" data-path="methodindex.html"><a href="methodindex.html"><i class="fa fa-check"></i><b>9</b> Methods topic index</a></li>
+<li class="chapter" data-level="10" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>10</b> Appendix</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://oes.gsa.gov" target="blank">Published by the OES</a></li>
 
@@ -650,12 +683,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="poweranalysis" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Power analysis</h1>
+<div id="poweranalysis" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Power analysis<a href="poweranalysis.html#poweranalysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This chapter provides examples of how we assess statistical power for different experimental research designs. We often employ simulation here because we rarely have designs that fit easily into the assumptions made by analytic tools (though when we do, these tools are an invaluable reference). By &#x201C;analytic tools,&#x201D; we refer to methods of calculating power (or a minimum required sample size, etc.) based on mathematical derivations under particular assumptions.</p>
-<p>For instance, in an <em>i.i.d.</em> two-arm design with random assignment of half the sample, no covariates, a roughly normally distributed outcome, and equal variance in each treatment group, it&#x2019;s possible show that we would have 80% power to estimate a difference in means of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x394;</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">&#x394;</span></span></span></span> if we collect data on approximately <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mo stretchy="false">(</mo><mn>5.6</mn><mi>&#x3C3;</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">&#x394;</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n = (5.6 \sigma /\Delta)^{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">5.6</span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span><span class="mord">/&#x394;</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span> observations, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C3;</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span></span></span></span> is the overall standard deviation of the outcome.<a href="references.html#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a> But we frequently consider situations where such derivations are not readily available.</p>
-<div id="an-example-of-the-off-the-shelf-approach" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> An example of the off-the-shelf approach</h2>
+<p>For instance, in an <em>i.i.d.</em> two-arm design with random assignment of half the sample, no covariates, a roughly normally distributed outcome, and equal variance in each treatment group, it&#x2019;s possible show that we would have 80% power to estimate a difference in means of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x394;</mi></mrow><annotation encoding="application/x-tex">\Delta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">&#x394;</span></span></span></span> if we collect data on approximately <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mo stretchy="false">(</mo><mn>5.6</mn><mi>&#x3C3;</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">&#x394;</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n = (5.6 \sigma /\Delta)^{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">5.6</span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span><span class="mord">/&#x394;</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span> observations, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C3;</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span></span></span></span> is the overall standard deviation of the outcome.<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a> But we frequently consider situations where such derivations are not readily available.</p>
+<div id="an-example-of-the-off-the-shelf-approach" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> An example of the off-the-shelf approach<a href="poweranalysis.html#an-example-of-the-off-the-shelf-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To demonstrate how analytical power analysis works in principle, consider the R function <code>power.t.test()</code>. This can be used for power calculations in designs where a two-sample t-test is an appropriate estimation strategy (with no adjustment for blocking, clustering, or covariates).</p>
 <p>When using this function, there are three parameters that we&#x2019;re most concerned
 with, two of which must be specified by the user. The third is then calculated and returned by the function. These are:</p>
@@ -696,8 +729,8 @@ NOTE: n is number in *each* group</code></pre>
 <p>Stata users can learn more about available off-the-shelf tools by checking out Stata&#x2019;s
 plethora of <a href="https://www.stata.com/features/power-and-sample-size/">relevant help files</a>. Meanwhile, R users could start by consulting the <code>pwrss</code>&#x2019;s packages <a href="https://cran.r-project.org/web/packages/pwrss/vignettes/examples.html">guide</a>.</p>
 </div>
-<div id="an-example-of-the-simulation-approach" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> An example of the simulation approach</h2>
+<div id="an-example-of-the-simulation-approach" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> An example of the simulation approach<a href="poweranalysis.html#an-example-of-the-simulation-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <!-- Adds copy code button -->
 <script>
   addClassKlippyToPreCode();
@@ -708,8 +741,8 @@ plethora of <a href="https://www.stata.com/features/power-and-sample-size/">rele
 <!-- set chapter number and reset count -->
 <p>We can compare the output of <code>power.t.test()</code> to the output from a
 simulation-based (i.e., computational) approach. We have one example below, and several more throughout this chapter. Our simulation examples relies on template code we put together that could be adapted by OES team members to the needs of different projects. This code is more detailed than we need for simple power analysis problems, but it provides useful flexibility when simulating more complicated designs.</p>
-<div id="how-do-we-structure-the-simulation" class="section level3" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> How do we structure the simulation?</h3>
+<div id="how-do-we-structure-the-simulation" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> How do we structure the simulation?<a href="poweranalysis.html#how-do-we-structure-the-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before we get to that template code, though, keep in mind that there are a few ways we could use a simulation to think about a design&#x2019;s statistical power:</p>
 <ul>
 <li><p>Simulate a design in which the null hypothesis is true many times, and estimate a treatment effect for each simulated dataset, yielding a distribution of test statistics (e.g., a t-static) under a true null. Use that null distribution, alongside coefficient/SE estimates from each model, to calculate power for different possible effect sizes.</p></li>
@@ -718,8 +751,8 @@ simulation-based (i.e., computational) approach. We have one example below, and 
 <p>The first approach is faster because we only have to do one round of simulations under a true null hypothesis. <em>This is what we do in our primary template code and most of the simulations in this chapter</em>. It&#x2019;s often a good place to start for cases that are just complicated enough to need simulation, but not so complicated that we need to explicitly model the potential outcomes.</p>
 <p>The second approach is more time consuming because we have to do a separate round of simulations for every effect size we&#x2019;re interested in. However, this might be necessary to accurately answer our design questions, for instance when we want to estimate power for one treatment effect in a design while another is held at a particular value. We show an example of this second approach in one of our examples below (simulating the efficiency benefits of Lin adjustment under treatment effect heterogeneity).</p>
 </div>
-<div id="simulation-template-code" class="section level3" number="6.2.2">
-<h3><span class="header-section-number">6.2.2</span> Simulation template code</h3>
+<div id="simulation-template-code" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Simulation template code<a href="poweranalysis.html#simulation-template-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="tab">
 <button class="tablinks" onclick="unrolltab(event, &apos;ch6R1&apos;)">
 R code
@@ -1498,19 +1531,19 @@ delta_steps(0.005) // Increments to apply</code></pre>
 examples that can be found online (or in our internal records of past OES project code) for more specialized use-cases.</p>
 </div>
 </div>
-<div id="when-to-use-which-approach" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> When to use which approach</h2>
+<div id="when-to-use-which-approach" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> When to use which approach<a href="poweranalysis.html#when-to-use-which-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For a simple difference in means test, the programming required for an analytical power analysis is much much less involved. In cases where we&#x2019;re interested in the power to detect a simple difference in means, or a difference in proportions for binary responses, it is probably sufficient to use <code>power.t.test()</code> (for means) or <code>power.prop.test()</code> (for proportions).</p>
 <p>However, OES projects often involve design features or analytic strategies that are difficult to account for using off-the-shelf tools. For example, we often include covariates in our statistical models to enhance the precision of our treatment effect estimates. If the gain in precision is small, then it might not be important to account for this in power calculations. But if we expect a substantial gain in precision due to including covariates, then we probably want to account for this when estimating power. The natural way to do this is by simulation, including the covariates in the &#x201C;replicate&#x201D; and &#x201C;estimate&#x201D; steps above.</p>
 <p>More complex design features or analytic strategies may make investing in the
 simulation approach even more worthwhile, or downright necessary. Examples
 include heterogeneity in treatment effects, a multi-arm or factorial design, or block randomization with differing probabilities of treatment between blocks &#x2013; none of which is usually easily accounted for with off-the-shelf tools. In the next section, we provide some additional examples of simulations for more complex designs or analytic strategies.</p>
 </div>
-<div id="additional-examples-of-the-simulation-approach" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Additional examples of the simulation approach</h2>
+<div id="additional-examples-of-the-simulation-approach" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Additional examples of the simulation approach<a href="poweranalysis.html#additional-examples-of-the-simulation-approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here we provide two examples of research designs where simulation is well worth the extra effort. Attendant R code is included to illustrate how we could use the functions above in these cases.</p>
-<div id="a-two-by-two-design-with-interaction" class="section level3" number="6.4.1">
-<h3><span class="header-section-number">6.4.1</span> A two-by-two design with interaction</h3>
+<div id="a-two-by-two-design-with-interaction" class="section level3 hasAnchor" number="6.4.1">
+<h3><span class="header-section-number">6.4.1</span> A two-by-two design with interaction<a href="poweranalysis.html#a-two-by-two-design-with-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One instance where computational power analysis may be worth the investment is
 in assessing power for a two-by-two factorial design with an interaction. In
 such a design, the goal is to assess not only the power to detect main effects
@@ -1682,9 +1715,9 @@ yline(0.8) title(&quot;Power for a 2x2 Design&quot;)</code></pre>
 <p><img src="OES_SOP_files/figure-html/unnamed-chunk-182-1.png" width=".9\textwidth"></p>
 <p>Of course, in this simple example, we could still have relied on some reasonable analytical assumptions to arrive at these estimates (see a helpful discussion <a href="https://statmodeling.stat.columbia.edu/2018/03/15/need-16-times-sample-size-estimate-interaction-estimate-main-effect/">here</a>). But running a simulation saves us the trouble.</p>
 </div>
-<div id="covariate-adjustment-with-the-lin-estimator" class="section level3" number="6.4.2">
-<h3><span class="header-section-number">6.4.2</span> Covariate adjustment with the Lin estimator</h3>
-<p>Another scenario where computational power analysis is worth the investment is if a design calls for covariate adjustment. This is common in OES projects, and, in many instances, the <span class="citation">Lin (<a href="references.html#ref-lin_agnostic_2013">2013</a>)</span> saturated regression estimator is the solution we choose. Employing an off-the-shelf method here is
+<div id="covariate-adjustment-with-the-lin-estimator" class="section level3 hasAnchor" number="6.4.2">
+<h3><span class="header-section-number">6.4.2</span> Covariate adjustment with the Lin estimator<a href="poweranalysis.html#covariate-adjustment-with-the-lin-estimator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Another scenario where computational power analysis is worth the investment is if a design calls for covariate adjustment. This is common in OES projects, and, in many instances, the <span class="citation">Lin (<a href="#ref-lin_agnostic_2013">2013</a>)</span> saturated regression estimator is the solution we choose. Employing an off-the-shelf method here is
 possible, but would likely require investing time doing background research. Alternatively, we could simply replicate, estimate, and
 evaluate such a design computationally. The results will be roughly just as accurate, without requiring a review of the methods literature.</p>
 <p>Suppose we have a sample of 100 observations and a continuous outcome
@@ -2025,11 +2058,11 @@ title(&quot;Power with Lin adjustment&quot;) yline(0.8)</code></pre>
 
 </div>
 </div>
-<p>We chose parameters to limit processing time, so the results are a bit noisy (you could reduce this by adding replications for each effect size). Nonetheless, for this data generating process, it&#x2019;s clear that the Lin estimator provides substantial improvements in power over the unadjusted difference in means, while standard covariate adjustment provides smaller improvements in power. This is, of course, true by design. In real projects, the differences between these covariate adjustment strategies may be negligible. But it is useful to remember that <span class="citation">Lin (<a href="references.html#ref-lin_agnostic_2013">2013</a>)</span> adjustment is more likely to be valuable with imbalanced treatment assignment and substantial effect heterogeneity. See our discussion in the Analysis Choices chapter.</p>
+<p>We chose parameters to limit processing time, so the results are a bit noisy (you could reduce this by adding replications for each effect size). Nonetheless, for this data generating process, it&#x2019;s clear that the Lin estimator provides substantial improvements in power over the unadjusted difference in means, while standard covariate adjustment provides smaller improvements in power. This is, of course, true by design. In real projects, the differences between these covariate adjustment strategies may be negligible. But it is useful to remember that <span class="citation">Lin (<a href="#ref-lin_agnostic_2013">2013</a>)</span> adjustment is more likely to be valuable with imbalanced treatment assignment and substantial effect heterogeneity. See our discussion in the Analysis Choices chapter.</p>
 <p><img src="OES_SOP_files/figure-html/unnamed-chunk-188-1.png" width=".9\textwidth"></p>
 </div>
-<div id="incorporating-declaredesign-into-oes-power-tools" class="section level3" number="6.4.3">
-<h3><span class="header-section-number">6.4.3</span> Incorporating DeclareDesign into OES Power Tools</h3>
+<div id="incorporating-declaredesign-into-oes-power-tools" class="section level3 hasAnchor" number="6.4.3">
+<h3><span class="header-section-number">6.4.3</span> Incorporating DeclareDesign into OES Power Tools<a href="poweranalysis.html#incorporating-declaredesign-into-oes-power-tools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In R, we can also use <code>DeclareDesign</code> within this <strong>Replicate</strong>, <strong>Estimate</strong>, <strong>Evaluate</strong> framework. This involves using <code>DeclareDesign</code> to draw estimates, and then feeding the results into the OES <code>evaluate_power()</code> function. We compare the <code>DeclareDesign</code> approach to the OES <code>Replicate</code> and <code>Estimate</code> steps below.</p>
 <p>First, we simulate a simple design with the OES tools introduced above:</p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="poweranalysis.html#cb210-1" tabindex="-1"></a>eval <span class="ot">&lt;-</span> </span>
@@ -2124,12 +2157,12 @@ data in the figure below:</p>
 <p><img src="OES_SOP_files/figure-html/unnamed-chunk-192-1.png" width=".9\textwidth"></p>
 </div>
 </div>
-<div id="approximating-power-ex-post" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Approximating power ex-post</h2>
+<div id="approximating-power-ex-post" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Approximating power ex-post<a href="poweranalysis.html#approximating-power-ex-post" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We conclude this chapter by discussing a slightly different topic. Sometimes, once an analysis is finished, we might want a sense of what treatment effects we <em>would have been</em> sufficiently powered to detect. For reasons outlined in <a href="https://blogs.worldbank.org/en/impactevaluations/why-ex-post-power-using-estimated-effect-sizes-bad-ex-post-mde-not">this World Bank blog post</a>, it is problematic to estimate power for an observed effect size. However, it can be useful to approximate what our minimum detectable effect at 80% power was, for comparison with the <a href="https://lakens.github.io/statistical_inferences/09-equivalencetest.html#sec-sesoi">smallest effect of substantive interest, or SESI</a>.</p>
-<p>This is particularly useful for making sense of statistically insignificant results, and is similar to the logic behind equivalence testing <span class="citation">(<a href="references.html#ref-hartman2018equivalence">Hartman and Hidalgo 2018</a>; <a href="references.html#ref-rainey2014arguing">Rainey 2014</a>)</span>. If the MDE-80 is smaller than the SESI, this implies that our study had acceptable power to detect all possible true effect sizes large enough to be of interest (which should make us more confident in a &#x201C;no effect&#x201D; interpretation). In contrast, if the MDE-80 is much larger than the SESI, this implies that there are possible true effect sizes that are policy relevant but too small for our study to detect (which should make us less confident in a &#x201C;no effect&#x201D; interpretation).</p>
-<p>Rather than conducting another simulation, a useful heuristic for an <em>approximate</em> ex-post MDE at 80% power is the estimated standard error of the treatment effect multiplied by 2.8 (for a two-sided test): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>D</mi><msub><mi>E</mi><mn>80</mn></msub><mo>=</mo><mover accent="true"><mrow><mi>S</mi><mi>E</mi></mrow><mo>^</mo></mover><mo>&#xD7;</mo><mn>2.8</mn></mrow><annotation encoding="application/x-tex">MDE_{80} = \hat{SE} \times 2.8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">80</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0301em;vertical-align:-0.0833em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">SE</span></span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.8</span></span></span></span> <span class="citation">(<a href="references.html#ref-ioannidis2017power">Ioannidis, Stanley, and Doucouliagos 2017</a>; <a href="references.html#ref-bloom1995minimum">Bloom 1995</a>)</span>. The actual MDE-80 is the real SE times 2.8. But plugging in our sample estimate can often still be informative. Remember that the usefulness of this rests on the accuracy of our estimated standard errors.</p>
-<p>Why does this work? See <span class="citation">Bloom (<a href="references.html#ref-bloom1995minimum">1995</a>)</span> for more context. To explain, we need to review some basics of statistical inference first. We generally judge a finding as &#x201C;statistically significant&#x201D; if the absolute value of its <em>test statistic</em>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>f</mi><mi>f</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi mathvariant="normal">/</mi><mi>S</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">effect/SE</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.05764em;">SE</span></span></span></span>, is greater than or equal to 1.96. Under an assumption that the null is true&#x2014;and an assumption that the standard normal, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">N</mi><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{N}(0,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>, is an appropriate model of the test statistics we could observe under a true null (e.g., central limit theorem)&#x2014;random chance alone will only produce a test statistic at least as far from 0 as 1.96 about 5% of the time.<a href="references.html#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a></p>
+<p>This is particularly useful for making sense of statistically insignificant results, and is similar to the logic behind equivalence testing <span class="citation">(<a href="#ref-hartman2018equivalence">Hartman and Hidalgo 2018</a>; <a href="#ref-rainey2014arguing">Rainey 2014</a>)</span>. If the MDE-80 is smaller than the SESI, this implies that our study had acceptable power to detect all possible true effect sizes large enough to be of interest (which should make us more confident in a &#x201C;no effect&#x201D; interpretation). In contrast, if the MDE-80 is much larger than the SESI, this implies that there are possible true effect sizes that are policy relevant but too small for our study to detect (which should make us less confident in a &#x201C;no effect&#x201D; interpretation).</p>
+<p>Rather than conducting another simulation, a useful heuristic for an <em>approximate</em> ex-post MDE at 80% power is the estimated standard error of the treatment effect multiplied by 2.8 (for a two-sided test): <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>D</mi><msub><mi>E</mi><mn>80</mn></msub><mo>=</mo><mover accent="true"><mrow><mi>S</mi><mi>E</mi></mrow><mo>^</mo></mover><mo>&#xD7;</mo><mn>2.8</mn></mrow><annotation encoding="application/x-tex">MDE_{80} = \hat{SE} \times 2.8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">80</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0301em;vertical-align:-0.0833em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">SE</span></span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.8</span></span></span></span> <span class="citation">(<a href="#ref-ioannidis2017power">Ioannidis, Stanley, and Doucouliagos 2017</a>; <a href="#ref-bloom1995minimum">Bloom 1995</a>)</span>. The actual MDE-80 is the real SE times 2.8. But plugging in our sample estimate can often still be informative. Remember that the usefulness of this rests on the accuracy of our estimated standard errors.</p>
+<p>Why does this work? See <span class="citation">Bloom (<a href="#ref-bloom1995minimum">1995</a>)</span> for more context. To explain, we need to review some basics of statistical inference first. We generally judge a finding as &#x201C;statistically significant&#x201D; if the absolute value of its <em>test statistic</em>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>f</mi><mi>f</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi mathvariant="normal">/</mi><mi>S</mi><mi>E</mi></mrow><annotation encoding="application/x-tex">effect/SE</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.05764em;">SE</span></span></span></span>, is greater than or equal to 1.96. Under an assumption that the null is true&#x2014;and an assumption that the standard normal, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">N</mi><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{N}(0,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>, is an appropriate model of the test statistics we could observe under a true null (e.g., central limit theorem)&#x2014;random chance alone will only produce a test statistic at least as far from 0 as 1.96 about 5% of the time.<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a></p>
 <p>Now, what if there is a positive treatment effect? In that case, the true distribution of test statistics we might observe by random chance is shifted to the right away from <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">N</mi><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{N}(0,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>. If it is shifted to the right by 2.8, yielding <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="script">N</mi><mo stretchy="false">(</mo><mn>2.8</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathcal{N}(2.8,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord">2.8</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>, then 80% of the values we might observe will now be above the 1.96 significance threshold. In other words, if the true treatment effect yields a test statistic of exactly 2.8, it is just big enough for us to have an 80% chance of concluding that the treatment effect is statistically significant. And since <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>f</mi><mi>f</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi mathvariant="normal">/</mi><mi>S</mi><mi>E</mi><mo>=</mo><mn>2.8</mn></mrow><annotation encoding="application/x-tex">effect/SE=2.8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.05764em;">SE</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.8</span></span></span></span>, the smallest effect we could detect with 80% power is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>f</mi><mi>f</mi><mi>e</mi><mi>c</mi><mi>t</mi><mo>=</mo><mi>S</mi><mi>E</mi><mo>&#xD7;</mo><mn>2.8</mn></mrow><annotation encoding="application/x-tex">effect = SE \times 2.8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">SE</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xD7;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2.8</span></span></span></span>.</p>
 <p>We provide a quick R simulation below illustrating that the utility of this heuristic. Specifically, we compute power for a simple design using tools presented above. We then compare this to the ex-post calculation results for each of many randomly drawn datasets. The results are promising! But again, the accuracy of this heuristic will vary from setting to setting, so it should be used cautiously.</p>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="poweranalysis.html#cb214-1" tabindex="-1"></a><span class="do">## Parameters</span></span>
@@ -2189,6 +2222,34 @@ data in the figure below:</p>
 
 </div>
 </div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-bloom1995minimum" class="csl-entry">
+Bloom, Howard S. 1995. <span>&#x201C;Minimum Detectable Effects: A Simple Way to Report the Statistical Power of Experimental Designs.&#x201D;</span> <em>Evaluation Review</em> 19 (5): 547&#x2013;56.
+</div>
+<div id="ref-gelman2006data" class="csl-entry">
+Gelman, Andrew, and Jennifer Hill. 2006. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Cambridge university press.
+</div>
+<div id="ref-hartman2018equivalence" class="csl-entry">
+Hartman, Erin, and F Daniel Hidalgo. 2018. <span>&#x201C;An Equivalence Approach to Balance and Placebo Tests.&#x201D;</span> <em>American Journal of Political Science</em> 62 (4): 1000&#x2013;1013.
+</div>
+<div id="ref-ioannidis2017power" class="csl-entry">
+Ioannidis, John PA, Tom D Stanley, and Hristos Doucouliagos. 2017. <span>&#x201C;The Power of Bias in Economics Research.&#x201D;</span> Oxford University Press Oxford, UK.
+</div>
+<div id="ref-lin_agnostic_2013" class="csl-entry">
+Lin, Winston. 2013. <span>&#x201C;Agnostic Notes on Regression Adjustments to Experimental Data: <span>Reexamining</span> <span>Freedman</span>&#x2019;s Critique.&#x201D;</span> <em>The Annals of Applied Statistics</em> 7 (1): 295&#x2013;318.
+</div>
+<div id="ref-rainey2014arguing" class="csl-entry">
+Rainey, Carlisle. 2014. <span>&#x201C;Arguing for a Negligible Effect.&#x201D;</span> <em>American Journal of Political Science</em> 58 (4): 1083&#x2013;91.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="40">
+<li id="fn40"><p>See <span class="citation">Gelman and Hill (<a href="#ref-gelman2006data">2006</a>)</span>, section 20.3, page 443.<a href="poweranalysis.html#fnref40" class="footnote-back">&#x21A9;&#xFE0E;</a></p></li>
+<li id="fn41"><p>As discussed in Chapter 3, this &#x201C;chance&#x201D; or &#x201C;noise&#x201D; might arise from sampling from a larger population, or from noise introduced by the different random assignments we could observe in a fixed sample.<a href="poweranalysis.html#fnref41" class="footnote-back">&#x21A9;&#xFE0E;</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
@@ -2199,29 +2260,42 @@ data in the figure below:</p>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
 <script src="libs/gitbook/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": null,
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/gsa-oes/sop/edit/master/Book/06-poweranalysis.Rmd",
-"text": "Edit"
-},
-"download": ["OES_SOP.pdf", "OES_SOP.epub"],
-"toc": {
-"collapse": "section"
-}
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/gsa-oes/sop/edit/master/Book/06-poweranalysis.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["OES_SOP.pdf", "OES_SOP.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
 });
 });
 </script>
@@ -2232,9 +2306,10 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
